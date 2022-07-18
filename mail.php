@@ -18,6 +18,6 @@ $msg = $todos;
 $msg = wordwrap($msg,70);
 
 // send email
-$sended = mail('bpoborowski@gmail.com',"My subject",$msg);
+$sended = mail('bpoborowski@gmail.com',"My subject",$msg); // chuj Ci w dupe zmien zmienną!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 echo json_encode(["isSended"=>$sended]);
 ?>
