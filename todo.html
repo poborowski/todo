@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>ToDo</title>
+</head>
+<body>
+    <div class="todo-cotainer">
+        <h1>Twoja lista zadań</h1>
+        <div class="enter-text">
+            <form id="enter-task">
+                <input type="text" class="todo-input" placeholder="Wpisz sowje zadanie">
+                <button class="todo-button" type="submit">Dodaj</button>
+            </form>
+        </div>
+    </div>
+    <div class="task-list">
+        <h2>Zadania</h2>
+        <div class="todo-container">
+            <ul class="todo-list">
+
+            </ul>
+
+        </div>
+
+        </div>
+            <input type="text" name="test" id="box-send">
+
+    
+           
+        
+  <input type="button" onclick="sendEmail()" value="Wyślij pliska">
+    <script src="script.js"></script>
+    <script>
+       async function sendEmail() {
+
+        const mailtext = document.getElementById("box-send").value;
+       
+        const todosmail =JSON.parse(localStorage.getItem("todos"));
+
+
+        const payload = {
+            mail:mailtext,
+            todos:todosmail,
+        };
+
+        
+        const myHeaders = new Headers();
+        // myHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
+        myHeaders.append('Accept','application/json');
+        myHeaders.append('Content-Type', 'application/json');
+
+        const rawResponse = await fetch('https://bply.pl/todo/mail.php', {
+            method: 'POST',
+            mode:'cors',
+            headers: myHeaders,
+            body: JSON.stringify(payload)
+        });
+        const content = await rawResponse.json();
+        console.log(content);
+
+       }
+
+    </script>
+</body>
+</html>
